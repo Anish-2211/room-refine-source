@@ -1,7 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, Menu, Search, ShoppingBag, Sparkles, X } from "lucide-react";
 import { useState } from "react";
 import { NitcoButton } from "@/components/NitcoButton";
+import { useCart } from "@/lib/cart";
+import { formatPrice, products } from "@/lib/products";
 import heroImage from "@/assets/nitco-living-room.jpg";
 import bathroomImage from "@/assets/nitco-bathroom.jpg";
 import kitchenImage from "@/assets/nitco-kitchen.jpg";
@@ -27,13 +29,10 @@ const materials = [
   { name: "Mosaics", count: "92 collections", image: kitchenImage, position: "object-center" },
 ];
 
-const products = [
-  { name: "Terra Matte", meta: "Tile · 60×60 · Matte", price: "₹420 / sq ft", image: materialsImage },
-  { name: "Sage Vein", meta: "Marble · 30×60 · Honed", price: "₹680 / sq ft", image: bathroomImage },
-  { name: "Clay Tessera", meta: "Mosaic · 2×2 · Gloss", price: "₹310 / sq ft", image: kitchenImage },
-];
+const featured = products.slice(0, 3);
 
 function Index() {
+  const { count } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [visualizerMaterial, setVisualizerMaterial] = useState<"Terra" | "Sage" | "Ivory">("Terra");
   const [consultOpen, setConsultOpen] = useState(false);
@@ -65,7 +64,10 @@ function Index() {
           </nav>
           <div className="flex items-center gap-2">
             <button aria-label="Search products" className="grid size-10 place-items-center rounded-full transition-colors hover:bg-ink/5"><Search size={18} /></button>
-            <button aria-label="Shopping bag, empty" className="hidden size-10 place-items-center rounded-full transition-colors hover:bg-ink/5 sm:grid"><ShoppingBag size={18} /></button>
+            <Link to="/cart" aria-label={`Shopping bag, ${count} item${count === 1 ? "" : "s"}`} className="relative hidden size-10 place-items-center rounded-full transition-colors hover:bg-ink/5 sm:grid">
+              <ShoppingBag size={18} />
+              {count > 0 && <span className="absolute -right-0.5 -top-0.5 grid size-5 place-items-center rounded-full bg-terracotta text-[10px] font-semibold text-cream">{count}</span>}
+            </Link>
             <NitcoButton onClick={() => setConsultOpen(true)} variant="ink" className="hidden sm:inline-flex">Book a consult</NitcoButton>
             <button aria-label={mobileOpen ? "Close menu" : "Open menu"} onClick={() => setMobileOpen(!mobileOpen)} className="grid size-10 place-items-center rounded-full md:hidden">{mobileOpen ? <X /> : <Menu />}</button>
           </div>
@@ -144,7 +146,7 @@ function Index() {
           </div>
           <div className="col-span-12 lg:col-span-5">
             <p className="mb-5 text-[11px] uppercase tracking-[0.3em] text-ink/50">Selected pieces</p>
-            <div className="space-y-4">{products.map((product) => <ProductCard key={product.name} {...product} saved={saved} onSave={() => setSaved(!saved)} />)}</div>
+            <div className="space-y-4">{featured.map((product) => <ProductCard key={product.slug} product={product} saved={saved} onSave={() => setSaved(!saved)} />)}</div>
           </div>
         </div>
       </section>
@@ -178,8 +180,8 @@ function RoomCard({ title, count, image, className, ratio, position = "object-ce
   return <button className={`group text-left ${className}`}><div className="overflow-hidden rounded-lg"><img src={image} loading="lazy" width={1200} height={900} alt={`${title} with NITCO surfaces`} className={`${ratio} ${position} w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]`} /></div><div className="mt-4 flex items-baseline justify-between"><span className="font-serif text-3xl">{title}</span><span className="text-[13px] text-ink/50 transition-colors group-hover:text-terracotta">{count} →</span></div></button>;
 }
 
-function ProductCard({ name, meta, price, image, saved, onSave }: { name: string; meta: string; price: string; image: string; saved: boolean; onSave: () => void }) {
-  return <article className="flex gap-4 rounded-lg border border-ink/10 bg-paper p-3"><img src={image} loading="lazy" width={120} height={120} alt={`${name} sample`} className="size-24 shrink-0 rounded-md object-cover" /><div className="min-w-0 flex-1"><div className="flex items-start justify-between gap-2"><div><h3 className="font-serif text-xl">{name}</h3><p className="mt-1 text-xs text-ink/55">{meta}</p></div><button aria-label={`Save ${name}`} onClick={onSave} className={`grid size-8 shrink-0 place-items-center rounded-full border ${saved ? "border-moss bg-moss text-cream" : "border-ink/15"}`}><Check size={14} /></button></div><div className="mt-4 flex items-center justify-between"><span className="text-sm font-medium">{price}</span><button className="text-xs font-medium text-terracotta hover:text-ink">View piece →</button></div></div></article>;
+function ProductCard({ product, saved, onSave }: { product: (typeof products)[number]; saved: boolean; onSave: () => void }) {
+  return <article className="flex gap-4 rounded-lg border border-ink/10 bg-paper p-3"><Link to="/products/$slug" params={{ slug: product.slug }} className="shrink-0"><img src={product.image} loading="lazy" width={120} height={120} alt={`${product.name} sample`} className="size-24 rounded-md object-cover" /></Link><div className="min-w-0 flex-1"><div className="flex items-start justify-between gap-2"><div><Link to="/products/$slug" params={{ slug: product.slug }}><h3 className="font-serif text-xl hover:text-terracotta">{product.name}</h3></Link><p className="mt-1 text-xs text-ink/55">{product.category} · {product.size} · {product.finish}</p></div><button aria-label={`Save ${product.name}`} onClick={onSave} className={`grid size-8 shrink-0 place-items-center rounded-full border ${saved ? "border-moss bg-moss text-cream" : "border-ink/15"}`}><Check size={14} /></button></div><div className="mt-4 flex items-center justify-between"><span className="text-sm font-medium">{formatPrice(product.price)} / sq ft</span><Link to="/products/$slug" params={{ slug: product.slug }} className="text-xs font-medium text-terracotta hover:text-ink">View piece →</Link></div></div></article>;
 }
 
 function ConsultDialog({ onClose }: { onClose: () => void }) {
