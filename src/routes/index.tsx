@@ -3,7 +3,7 @@ import { ArrowRight, Check, Menu, Search, ShoppingBag, Sparkles, X } from "lucid
 import { useState } from "react";
 import { NitcoButton } from "@/components/NitcoButton";
 import { useCart } from "@/lib/cart";
-import { formatPrice, products } from "@/lib/products";
+import { formatPrice, products, productsForRoom, rooms } from "@/lib/products";
 import heroImage from "@/assets/nitco-living-room.jpg";
 import bathroomImage from "@/assets/nitco-bathroom.jpg";
 import kitchenImage from "@/assets/nitco-kitchen.jpg";
@@ -24,10 +24,10 @@ export const Route = createFileRoute("/")({
 });
 
 const materials = [
-  { name: "Tiles", count: "128 collections", image: materialsImage, position: "object-left" },
-  { name: "Marble", count: "64 collections", image: bathroomImage, position: "object-center" },
-  { name: "Mosaics", count: "92 collections", image: kitchenImage, position: "object-center" },
-];
+  { name: "Tiles", category: "Tile", image: materialsImage, position: "object-left" },
+  { name: "Marble", category: "Marble", image: bathroomImage, position: "object-center" },
+  { name: "Mosaics", category: "Mosaic", image: kitchenImage, position: "object-center" },
+].map((m) => ({ ...m, count: `${products.filter((p) => p.category === m.category).length} surfaces` }));
 
 const featured = products.slice(0, 3);
 
@@ -129,10 +129,10 @@ function Index() {
       <section id="rooms" className="mx-auto max-w-[1440px] px-5 py-20 lg:px-10">
         <div className="mb-10 flex items-end justify-between"><div><p className="text-[11px] uppercase tracking-[0.3em] text-ink/50">02 — Rooms</p><h2 className="mt-2 font-serif text-5xl">Browse by room</h2></div><p className="hidden max-w-[30ch] text-sm text-ink/60 lg:block">Each room is a curated spread of surfaces, finishes and pairings.</p></div>
         <div className="grid grid-cols-12 gap-5">
-          <RoomCard title="Living Room" count="24 surfaces" image={heroImage} className="col-span-12 md:col-span-7" ratio="aspect-[16/10]" />
-          <RoomCard title="Bathroom" count="18 surfaces" image={bathroomImage} className="col-span-12 md:col-span-5" ratio="aspect-[4/5]" />
-          <RoomCard title="Kitchen" count="16 surfaces" image={kitchenImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" />
-          <RoomCard title="Hall & Passage" count="12 surfaces" image={heroImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" position="object-bottom" />
+          <RoomCard room={rooms[0]} image={heroImage} className="col-span-12 md:col-span-7" ratio="aspect-[16/10]" />
+          <RoomCard room={rooms[1]} image={bathroomImage} className="col-span-12 md:col-span-5" ratio="aspect-[4/5]" />
+          <RoomCard room={rooms[2]} image={kitchenImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" />
+          <RoomCard room={rooms[3]} image={heroImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" position="object-bottom" />
         </div>
       </section>
 
@@ -176,8 +176,9 @@ function Index() {
   );
 }
 
-function RoomCard({ title, count, image, className, ratio, position = "object-center" }: { title: string; count: string; image: string; className: string; ratio: string; position?: string }) {
-  return <button className={`group text-left ${className}`}><div className="overflow-hidden rounded-lg"><img src={image} loading="lazy" width={1200} height={900} alt={`${title} with NITCO surfaces`} className={`${ratio} ${position} w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]`} /></div><div className="mt-4 flex items-baseline justify-between"><span className="font-serif text-3xl">{title}</span><span className="text-[13px] text-ink/50 transition-colors group-hover:text-terracotta">{count} →</span></div></button>;
+function RoomCard({ room, image, className, ratio, position = "object-center" }: { room: (typeof rooms)[number]; image: string; className: string; ratio: string; position?: string }) {
+  const count = productsForRoom(room.name).length;
+  return <Link to="/rooms/$slug" params={{ slug: room.slug }} className={`group text-left ${className}`}><div className="overflow-hidden rounded-lg"><img src={image} loading="lazy" width={1200} height={900} alt={`${room.name} with NITCO surfaces`} className={`${ratio} ${position} w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]`} /></div><div className="mt-4 flex items-baseline justify-between"><span className="font-serif text-3xl">{room.name}</span><span className="text-[13px] text-ink/50 transition-colors group-hover:text-terracotta">{count} surfaces →</span></div></Link>;
 }
 
 function ProductCard({ product, saved, onSave }: { product: (typeof products)[number]; saved: boolean; onSave: () => void }) {
