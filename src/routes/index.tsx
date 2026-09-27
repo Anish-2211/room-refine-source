@@ -129,10 +129,10 @@ function Index() {
       <section id="rooms" className="mx-auto max-w-[1440px] px-5 py-20 lg:px-10">
         <div className="mb-10 flex items-end justify-between"><div><p className="text-[11px] uppercase tracking-[0.3em] text-ink/50">02 — Rooms</p><h2 className="mt-2 font-serif text-5xl">Browse by room</h2></div><p className="hidden max-w-[30ch] text-sm text-ink/60 lg:block">Each room is a curated spread of surfaces, finishes and pairings.</p></div>
         <div className="grid grid-cols-12 gap-5">
-          <RoomCard room={rooms[0]} image={heroImage} className="col-span-12 md:col-span-7" ratio="aspect-[16/10]" />
-          <RoomCard room={rooms[1]} image={bathroomImage} className="col-span-12 md:col-span-5" ratio="aspect-[4/5]" />
-          <RoomCard room={rooms[2]} image={kitchenImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" />
-          <RoomCard room={rooms[3]} image={heroImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" position="object-bottom" />
+          <RoomCard room={rooms[0]!} image={heroImage} className="col-span-12 md:col-span-7" ratio="aspect-[16/10]" />
+          <RoomCard room={rooms[1]!} image={bathroomImage} className="col-span-12 md:col-span-5" ratio="aspect-[4/5]" />
+          <RoomCard room={rooms[2]!} image={kitchenImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" />
+          <RoomCard room={rooms[3]!} image={heroImage} className="col-span-12 md:col-span-6" ratio="aspect-[10/7]" position="object-bottom" />
         </div>
       </section>
 
