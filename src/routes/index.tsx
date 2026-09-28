@@ -24,9 +24,9 @@ export const Route = createFileRoute("/")({
 });
 
 const materials = [
-  { name: "Tiles", category: "Tile", image: materialsImage, position: "object-left" },
-  { name: "Marble", category: "Marble", image: bathroomImage, position: "object-center" },
-  { name: "Mosaics", category: "Mosaic", image: kitchenImage, position: "object-center" },
+  { name: "Tiles", category: "Tile", to: "/tiles", image: materialsImage, position: "object-left" },
+  { name: "Marble", category: "Marble", to: "/marble", image: bathroomImage, position: "object-center" },
+  { name: "Mosaics", category: "Mosaic", to: "/mosaics", image: kitchenImage, position: "object-center" },
 ].map((m) => ({ ...m, count: `${products.filter((p) => p.category === m.category).length} surfaces` }));
 
 const featured = products.slice(0, 3);
@@ -58,9 +58,11 @@ function Index() {
             <span className="hidden text-[11px] uppercase tracking-[0.25em] text-ink/50 sm:inline">Material Folio</span>
           </button>
           <nav className="hidden items-center gap-7 text-[13px] font-medium md:flex" aria-label="Main navigation">
-            {["Rooms", "Tiles", "Marble", "Mosaics", "Showrooms"].map((item) => (
-              <button key={item} onClick={() => scrollTo(item === "Showrooms" ? "visit" : item === "Rooms" ? "rooms" : "materials")} className="text-ink/70 transition-colors hover:text-terracotta">{item}</button>
-            ))}
+            <button onClick={() => scrollTo("rooms")} className="text-ink/70 transition-colors hover:text-terracotta">Rooms</button>
+            <Link to="/tiles" className="text-ink/70 transition-colors hover:text-terracotta">Tiles</Link>
+            <Link to="/marble" className="text-ink/70 transition-colors hover:text-terracotta">Marble</Link>
+            <Link to="/mosaics" className="text-ink/70 transition-colors hover:text-terracotta">Mosaics</Link>
+            <button onClick={() => scrollTo("visit")} className="text-ink/70 transition-colors hover:text-terracotta">Showrooms</button>
           </nav>
           <div className="flex items-center gap-2">
             <button aria-label="Search products" className="grid size-10 place-items-center rounded-full transition-colors hover:bg-ink/5"><Search size={18} /></button>
@@ -74,9 +76,12 @@ function Index() {
         </div>
         {mobileOpen && (
           <nav className="absolute inset-x-0 top-full border-y border-ink/10 bg-paper p-5 shadow-lg md:hidden">
-            {["Rooms", "Materials", "Visualizer", "Showrooms"].map((item) => (
-              <button key={item} onClick={() => scrollTo(item.toLowerCase() === "showrooms" ? "visit" : item.toLowerCase())} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">{item}</button>
-            ))}
+            <button onClick={() => scrollTo("rooms")} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">Rooms</button>
+            <Link to="/tiles" onClick={() => setMobileOpen(false)} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">Tiles</Link>
+            <Link to="/marble" onClick={() => setMobileOpen(false)} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">Marble</Link>
+            <Link to="/mosaics" onClick={() => setMobileOpen(false)} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">Mosaics</Link>
+            <button onClick={() => scrollTo("visualizer")} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">Visualizer</button>
+            <button onClick={() => scrollTo("visit")} className="block w-full border-b border-ink/10 py-4 text-left font-serif text-2xl">Showrooms</button>
           </nav>
         )}
       </header>
@@ -116,10 +121,10 @@ function Index() {
           <div className="group overflow-hidden">
             <div className="material-rail flex w-max gap-5 group-hover:[animation-play-state:paused]">
               {[...materials, ...materials].map((material, index) => (
-                <button key={`${material.name}-${index}`} className="w-64 shrink-0 text-left" onClick={() => scrollTo("spread")}>
+                <Link key={`${material.name}-${index}`} to={material.to} className="w-64 shrink-0 text-left">
                   <div className="overflow-hidden rounded-lg"><img src={material.image} loading="lazy" width={600} height={720} alt={`${material.name} collection`} className={`aspect-[5/6] w-full object-cover transition-transform duration-700 hover:scale-105 ${material.position}`} /></div>
                   <div className="mt-3 flex items-baseline justify-between"><span className="font-serif text-2xl">{material.name}</span><span className="text-xs text-ink/50">{material.count}</span></div>
-                </button>
+                </Link>
               ))}
             </div>
           </div>
