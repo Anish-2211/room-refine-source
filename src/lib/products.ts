@@ -1,7 +1,21 @@
-import heroImage from "@/assets/nitco-living-room.jpg";
-import bathroomImage from "@/assets/nitco-bathroom.jpg";
-import kitchenImage from "@/assets/nitco-kitchen.jpg";
-import materialsImage from "@/assets/nitco-materials.jpg";
+import terraMatte from "@/assets/product-terra-matte.jpg";
+import terracottaHall from "@/assets/product-terracotta-hall.jpg";
+import ivoryCourt from "@/assets/product-ivory-court.jpg";
+import sageLoom from "@/assets/product-sage-loom.jpg";
+import emberGrid from "@/assets/product-ember-grid.jpg";
+import paperWhite from "@/assets/product-paper-white.jpg";
+import sageVein from "@/assets/product-sage-vein.jpg";
+import verdeAlpi from "@/assets/product-verde-alpi.jpg";
+import carraraMist from "@/assets/product-carrara-mist.jpg";
+import duneTravertine from "@/assets/product-dune-travertine.jpg";
+import noirStreak from "@/assets/product-noir-streak.jpg";
+import roseAlba from "@/assets/product-rose-alba.jpg";
+import clayTessera from "@/assets/product-clay-tessera.jpg";
+import mosaicGrove from "@/assets/product-mosaic-grove.jpg";
+import terraChip from "@/assets/product-terra-chip.jpg";
+import pearlHex from "@/assets/product-pearl-hex.jpg";
+import inkLine from "@/assets/product-ink-line.jpg";
+import meadowMix from "@/assets/product-meadow-mix.jpg";
 
 export type Room = "Living Room" | "Bathroom" | "Kitchen" | "Hall & Passage";
 
@@ -34,7 +48,7 @@ export const products: Product[] = [
     size: "60×60",
     finish: "Matte",
     price: 420,
-    image: materialsImage,
+    image: terraMatte,
     rooms: ["Living Room", "Hall & Passage"],
     description:
       "A warm, large-format terracotta tile with a soft matte surface. Hard-wearing and slip-resistant, it brings an earthy calm to living rooms and passages.",
@@ -46,7 +60,7 @@ export const products: Product[] = [
     size: "60×60",
     finish: "Matte",
     price: 460,
-    image: heroImage,
+    image: terracottaHall,
     rooms: ["Living Room", "Hall & Passage"],
     description:
       "The signature floor of The Terracotta Hall spread — a sun-baked large-format tile that holds warm light through the day.",
@@ -58,9 +72,8 @@ export const products: Product[] = [
     size: "80×80",
     finish: "Satin",
     price: 540,
-    image: heroImage,
+    image: ivoryCourt,
     rooms: ["Living Room", "Kitchen"],
-    position: "object-bottom",
     description:
       "A generous ivory tile with a satin sheen that brightens open-plan spaces. Stain-guarded surface stands up to busy family kitchens.",
   },
@@ -71,7 +84,7 @@ export const products: Product[] = [
     size: "30×60",
     finish: "Matte",
     price: 390,
-    image: bathroomImage,
+    image: sageLoom,
     rooms: ["Bathroom", "Kitchen"],
     description:
       "A woven-texture sage tile that softens bathroom walls and kitchen splash zones. Water-safe, easy to wipe, quiet to look at.",
@@ -83,7 +96,7 @@ export const products: Product[] = [
     size: "45×45",
     finish: "Rustic",
     price: 350,
-    image: kitchenImage,
+    image: emberGrid,
     rooms: ["Kitchen", "Hall & Passage"],
     description:
       "A rustic burnt-clay tile with a subtle grid relief. Hides everyday scuffs beautifully — made for kitchens and busy corridors.",
@@ -95,9 +108,8 @@ export const products: Product[] = [
     size: "60×120",
     finish: "Gloss",
     price: 610,
-    image: heroImage,
+    image: paperWhite,
     rooms: ["Living Room", "Bathroom"],
-    position: "object-top",
     description:
       "A large gloss tile in soft paper white. Bounces light deep into the room and makes compact spaces feel twice their size.",
   },
@@ -109,7 +121,7 @@ export const products: Product[] = [
     size: "30×60",
     finish: "Honed",
     price: 680,
-    image: bathroomImage,
+    image: sageVein,
     rooms: ["Bathroom"],
     description:
       "Cool sage-green marble with delicate veining, honed to a silk touch. Sealed for wet areas, it turns bathrooms into quiet, spa-like retreats.",
@@ -121,7 +133,7 @@ export const products: Product[] = [
     size: "60×120",
     finish: "Polished",
     price: 890,
-    image: bathroomImage,
+    image: verdeAlpi,
     rooms: ["Bathroom", "Living Room"],
     description:
       "Deep green polished marble with dramatic white veining. A statement surface for feature walls, vanity tops and grand bathrooms.",
@@ -133,7 +145,7 @@ export const products: Product[] = [
     size: "60×60",
     finish: "Honed",
     price: 750,
-    image: kitchenImage,
+    image: carraraMist,
     rooms: ["Kitchen", "Hall & Passage"],
     description:
       "Soft grey-white marble with misty veining. A timeless choice for counters, thresholds and elegant hallways.",
@@ -145,7 +157,7 @@ export const products: Product[] = [
     size: "40×80",
     finish: "Brushed",
     price: 720,
-    image: materialsImage,
+    image: duneTravertine,
     rooms: ["Living Room", "Hall & Passage"],
     description:
       "Warm sand-toned travertine with a brushed, open texture. Brings a Mediterranean ease to living floors and entrance halls.",
@@ -157,9 +169,8 @@ export const products: Product[] = [
     size: "60×120",
     finish: "Polished",
     price: 980,
-    image: heroImage,
+    image: noirStreak,
     rooms: ["Living Room"],
-    position: "object-bottom",
     description:
       "Inky black marble shot through with gold streaks. One wall of this and the room needs nothing else.",
   },
@@ -170,9 +181,8 @@ export const products: Product[] = [
     size: "30×60",
     finish: "Honed",
     price: 640,
-    image: bathroomImage,
+    image: roseAlba,
     rooms: ["Bathroom"],
-    position: "object-top",
     description:
       "A blush-pink marble with soft clouding. Gentle under morning light — made for serene bathrooms and powder rooms.",
   },
@@ -184,7 +194,7 @@ export const products: Product[] = [
     size: "2×2",
     finish: "Gloss",
     price: 310,
-    image: kitchenImage,
+    image: clayTessera,
     rooms: ["Kitchen"],
     description:
       "Hand-glazed clay mosaic chips with a gentle gloss. Perfect for kitchen backsplashes and accent walls where light should dance.",
@@ -196,7 +206,7 @@ export const products: Product[] = [
     size: "5×5",
     finish: "Matte",
     price: 380,
-    image: materialsImage,
+    image: mosaicGrove,
     rooms: ["Bathroom", "Kitchen"],
     description:
       "Small-format stone mosaics in mixed sage and cream tones. Grippy underfoot — ideal for shower floors and kitchen accents.",
@@ -208,7 +218,7 @@ export const products: Product[] = [
     size: "3×3",
     finish: "Matte",
     price: 290,
-    image: heroImage,
+    image: terraChip,
     rooms: ["Hall & Passage", "Kitchen"],
     description:
       "Terracotta mosaic chips in a warm speckled mix. A forgiving, characterful floor for passages, verandas and utility corners.",
@@ -220,7 +230,7 @@ export const products: Product[] = [
     size: "4×4 hex",
     finish: "Gloss",
     price: 450,
-    image: bathroomImage,
+    image: pearlHex,
     rooms: ["Bathroom"],
     description:
       "Hexagonal mosaics with a pearl glaze that shifts from cream to green. A jewel-like finish for shower walls and niches.",
@@ -232,9 +242,8 @@ export const products: Product[] = [
     size: "2×10 strip",
     finish: "Satin",
     price: 520,
-    image: kitchenImage,
+    image: inkLine,
     rooms: ["Kitchen", "Living Room"],
-    position: "object-bottom",
     description:
       "Long, narrow mosaic strips in deep ink tones. Lay them vertical or horizontal for a tailored, graphic backsplash or panel.",
   },
@@ -245,9 +254,8 @@ export const products: Product[] = [
     size: "5×5",
     finish: "Matte",
     price: 340,
-    image: materialsImage,
+    image: meadowMix,
     rooms: ["Hall & Passage", "Bathroom"],
-    position: "object-top",
     description:
       "A meadow-toned mix of sage, cream and clay chips. Cheerful underfoot and tough enough for the busiest thresholds.",
   },

@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as MarbleRouteImport } from './routes/marble'
+import { Route as MosaicsRouteImport } from './routes/mosaics'
+import { Route as TilesRouteImport } from './routes/tiles'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as RoomsSlugRouteImport } from './routes/rooms.$slug'
 
@@ -30,6 +33,21 @@ const CheckoutRoute = CheckoutRouteImport.update({
   path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarbleRoute = MarbleRouteImport.update({
+  id: '/marble',
+  path: '/marble',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MosaicsRoute = MosaicsRouteImport.update({
+  id: '/mosaics',
+  path: '/mosaics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TilesRoute = TilesRouteImport.update({
+  id: '/tiles',
+  path: '/tiles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/products/$slug',
   path: '/products/$slug',
@@ -45,6 +63,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/marble': typeof MarbleRoute
+  '/mosaics': typeof MosaicsRoute
+  '/tiles': typeof TilesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/rooms/$slug': typeof RoomsSlugRoute
 }
@@ -52,6 +73,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/marble': typeof MarbleRoute
+  '/mosaics': typeof MosaicsRoute
+  '/tiles': typeof TilesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/rooms/$slug': typeof RoomsSlugRoute
 }
@@ -60,19 +84,41 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/marble': typeof MarbleRoute
+  '/mosaics': typeof MosaicsRoute
+  '/tiles': typeof TilesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/rooms/$slug': typeof RoomsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cart' | '/checkout' | '/products/$slug' | '/rooms/$slug'
+  fullPaths:
+    | '/'
+    | '/cart'
+    | '/checkout'
+    | '/marble'
+    | '/mosaics'
+    | '/tiles'
+    | '/products/$slug'
+    | '/rooms/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cart' | '/checkout' | '/products/$slug' | '/rooms/$slug'
+  to:
+    | '/'
+    | '/cart'
+    | '/checkout'
+    | '/marble'
+    | '/mosaics'
+    | '/tiles'
+    | '/products/$slug'
+    | '/rooms/$slug'
   id:
     | '__root__'
     | '/'
     | '/cart'
     | '/checkout'
+    | '/marble'
+    | '/mosaics'
+    | '/tiles'
     | '/products/$slug'
     | '/rooms/$slug'
   fileRoutesById: FileRoutesById
@@ -81,6 +127,9 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
+  MarbleRoute: typeof MarbleRoute
+  MosaicsRoute: typeof MosaicsRoute
+  TilesRoute: typeof TilesRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   RoomsSlugRoute: typeof RoomsSlugRoute
 }
@@ -108,6 +157,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marble': {
+      id: '/marble'
+      path: '/marble'
+      fullPath: '/marble'
+      preLoaderRoute: typeof MarbleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mosaics': {
+      id: '/mosaics'
+      path: '/mosaics'
+      fullPath: '/mosaics'
+      preLoaderRoute: typeof MosaicsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tiles': {
+      id: '/tiles'
+      path: '/tiles'
+      fullPath: '/tiles'
+      preLoaderRoute: typeof TilesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products/$slug': {
       id: '/products/$slug'
       path: '/products/$slug'
@@ -129,6 +199,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
+  MarbleRoute: MarbleRoute,
+  MosaicsRoute: MosaicsRoute,
+  TilesRoute: TilesRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   RoomsSlugRoute: RoomsSlugRoute,
 }
