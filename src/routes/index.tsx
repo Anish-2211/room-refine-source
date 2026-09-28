@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const materials = [
+const materials: { name: string; category: "Tile" | "Marble" | "Mosaic"; to: "/tiles" | "/marble" | "/mosaics"; image: string; position: string }[] = [
   { name: "Tiles", category: "Tile", to: "/tiles", image: materialsImage, position: "object-left" },
   { name: "Marble", category: "Marble", to: "/marble", image: bathroomImage, position: "object-center" },
   { name: "Mosaics", category: "Mosaic", to: "/mosaics", image: kitchenImage, position: "object-center" },
