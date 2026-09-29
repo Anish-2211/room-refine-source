@@ -65,20 +65,20 @@ function ProductDetail() {
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 lg:col-span-7">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              <figure>
+              <figure className="min-w-0">
                 <div className="overflow-hidden rounded-lg">
                   <img src={product.image} width={1200} height={900} alt={`${product.name} ${product.category.toLowerCase()} installed in a finished room`} className={`aspect-[4/3] w-full object-cover ${product.position ?? "object-center"}`} />
                 </div>
-                <figcaption className="mt-2 flex items-center justify-between text-xs text-ink/55">
-                  <span>In a space</span><span>Installed view</span>
+                <figcaption className="mt-2 flex items-center justify-between gap-3 text-xs text-ink/55">
+                  <span>In a space</span><span className="shrink-0">Installed view</span>
                 </figcaption>
               </figure>
-              <figure>
+              <figure className="min-w-0">
                 <div className="overflow-hidden rounded-lg">
                   <img src={product.textureImage} loading="lazy" width={512} height={512} alt={`Close-up of ${product.name} ${product.finish.toLowerCase()} texture`} className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105" />
                 </div>
-                <figcaption className="mt-2 flex items-center justify-between text-xs text-ink/55">
-                  <span>Texture detail</span><span>{product.finish} finish</span>
+                <figcaption className="mt-2 flex items-center justify-between gap-3 text-xs text-ink/55">
+                  <span>Texture detail</span><span className="shrink-0">{product.finish} finish</span>
                 </figcaption>
               </figure>
             </div>
