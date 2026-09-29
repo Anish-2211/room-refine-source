@@ -1,4 +1,4 @@
-import terraMatte from "@/assets/product-terra-matte.jpg";
+import terraMatte from "@/assets/product-terra-matte-installed.jpg";
 import terracottaHall from "@/assets/product-terracotta-hall.jpg";
 import ivoryCourt from "@/assets/product-ivory-court.jpg";
 import sageLoom from "@/assets/product-sage-loom.jpg";
@@ -16,6 +16,24 @@ import terraChip from "@/assets/product-terra-chip.jpg";
 import pearlHex from "@/assets/product-pearl-hex.jpg";
 import inkLine from "@/assets/product-ink-line.jpg";
 import meadowMix from "@/assets/product-meadow-mix.jpg";
+import terraMatteTexture from "@/assets/product-terra-matte-texture.jpg";
+import terracottaHallTexture from "@/assets/product-terracotta-hall-texture.jpg";
+import ivoryCourtTexture from "@/assets/product-ivory-court-texture.jpg";
+import sageLoomTexture from "@/assets/product-sage-loom-texture.jpg";
+import emberGridTexture from "@/assets/product-ember-grid-texture.jpg";
+import paperWhiteTexture from "@/assets/product-paper-white-texture.jpg";
+import sageVeinTexture from "@/assets/product-sage-vein-texture.jpg";
+import verdeAlpiTexture from "@/assets/product-verde-alpi-texture.jpg";
+import carraraMistTexture from "@/assets/product-carrara-mist-texture.jpg";
+import duneTravertineTexture from "@/assets/product-dune-travertine-texture.jpg";
+import noirStreakTexture from "@/assets/product-noir-streak-texture.jpg";
+import roseAlbaTexture from "@/assets/product-rose-alba-texture.jpg";
+import clayTesseraTexture from "@/assets/product-clay-tessera-texture.jpg";
+import mosaicGroveTexture from "@/assets/product-mosaic-grove-texture.jpg";
+import terraChipTexture from "@/assets/product-terra-chip-texture.jpg";
+import pearlHexTexture from "@/assets/product-pearl-hex-texture.jpg";
+import inkLineTexture from "@/assets/product-ink-line-texture.jpg";
+import meadowMixTexture from "@/assets/product-meadow-mix-texture.jpg";
 
 export type Room = "Living Room" | "Bathroom" | "Kitchen" | "Hall & Passage";
 
@@ -34,6 +52,7 @@ export type Product = {
   finish: string;
   price: number; // ₹ per sq ft
   image: string;
+  textureImage: string;
   rooms: Room[];
   description: string;
   position?: string;
@@ -49,6 +68,7 @@ export const products: Product[] = [
     finish: "Matte",
     price: 420,
     image: terraMatte,
+    textureImage: terraMatteTexture,
     rooms: ["Living Room", "Hall & Passage"],
     description:
       "A warm, large-format terracotta tile with a soft matte surface. Hard-wearing and slip-resistant, it brings an earthy calm to living rooms and passages.",
@@ -61,6 +81,7 @@ export const products: Product[] = [
     finish: "Matte",
     price: 460,
     image: terracottaHall,
+    textureImage: terracottaHallTexture,
     rooms: ["Living Room", "Hall & Passage"],
     description:
       "The signature floor of The Terracotta Hall spread — a sun-baked large-format tile that holds warm light through the day.",
@@ -73,6 +94,7 @@ export const products: Product[] = [
     finish: "Satin",
     price: 540,
     image: ivoryCourt,
+    textureImage: ivoryCourtTexture,
     rooms: ["Living Room", "Kitchen"],
     description:
       "A generous ivory tile with a satin sheen that brightens open-plan spaces. Stain-guarded surface stands up to busy family kitchens.",
@@ -85,6 +107,7 @@ export const products: Product[] = [
     finish: "Matte",
     price: 390,
     image: sageLoom,
+    textureImage: sageLoomTexture,
     rooms: ["Bathroom", "Kitchen"],
     description:
       "A woven-texture sage tile that softens bathroom walls and kitchen splash zones. Water-safe, easy to wipe, quiet to look at.",
@@ -97,6 +120,7 @@ export const products: Product[] = [
     finish: "Rustic",
     price: 350,
     image: emberGrid,
+    textureImage: emberGridTexture,
     rooms: ["Kitchen", "Hall & Passage"],
     description:
       "A rustic burnt-clay tile with a subtle grid relief. Hides everyday scuffs beautifully — made for kitchens and busy corridors.",
@@ -109,6 +133,7 @@ export const products: Product[] = [
     finish: "Gloss",
     price: 610,
     image: paperWhite,
+    textureImage: paperWhiteTexture,
     rooms: ["Living Room", "Bathroom"],
     description:
       "A large gloss tile in soft paper white. Bounces light deep into the room and makes compact spaces feel twice their size.",
@@ -122,6 +147,7 @@ export const products: Product[] = [
     finish: "Honed",
     price: 680,
     image: sageVein,
+    textureImage: sageVeinTexture,
     rooms: ["Bathroom"],
     description:
       "Cool sage-green marble with delicate veining, honed to a silk touch. Sealed for wet areas, it turns bathrooms into quiet, spa-like retreats.",
@@ -134,6 +160,7 @@ export const products: Product[] = [
     finish: "Polished",
     price: 890,
     image: verdeAlpi,
+    textureImage: verdeAlpiTexture,
     rooms: ["Bathroom", "Living Room"],
     description:
       "Deep green polished marble with dramatic white veining. A statement surface for feature walls, vanity tops and grand bathrooms.",
@@ -146,6 +173,7 @@ export const products: Product[] = [
     finish: "Honed",
     price: 750,
     image: carraraMist,
+    textureImage: carraraMistTexture,
     rooms: ["Kitchen", "Hall & Passage"],
     description:
       "Soft grey-white marble with misty veining. A timeless choice for counters, thresholds and elegant hallways.",
@@ -158,6 +186,7 @@ export const products: Product[] = [
     finish: "Brushed",
     price: 720,
     image: duneTravertine,
+    textureImage: duneTravertineTexture,
     rooms: ["Living Room", "Hall & Passage"],
     description:
       "Warm sand-toned travertine with a brushed, open texture. Brings a Mediterranean ease to living floors and entrance halls.",
@@ -170,6 +199,7 @@ export const products: Product[] = [
     finish: "Polished",
     price: 980,
     image: noirStreak,
+    textureImage: noirStreakTexture,
     rooms: ["Living Room"],
     description:
       "Inky black marble shot through with gold streaks. One wall of this and the room needs nothing else.",
@@ -182,6 +212,7 @@ export const products: Product[] = [
     finish: "Honed",
     price: 640,
     image: roseAlba,
+    textureImage: roseAlbaTexture,
     rooms: ["Bathroom"],
     description:
       "A blush-pink marble with soft clouding. Gentle under morning light — made for serene bathrooms and powder rooms.",
@@ -195,6 +226,7 @@ export const products: Product[] = [
     finish: "Gloss",
     price: 310,
     image: clayTessera,
+    textureImage: clayTesseraTexture,
     rooms: ["Kitchen"],
     description:
       "Hand-glazed clay mosaic chips with a gentle gloss. Perfect for kitchen backsplashes and accent walls where light should dance.",
@@ -207,6 +239,7 @@ export const products: Product[] = [
     finish: "Matte",
     price: 380,
     image: mosaicGrove,
+    textureImage: mosaicGroveTexture,
     rooms: ["Bathroom", "Kitchen"],
     description:
       "Small-format stone mosaics in mixed sage and cream tones. Grippy underfoot — ideal for shower floors and kitchen accents.",
@@ -219,6 +252,7 @@ export const products: Product[] = [
     finish: "Matte",
     price: 290,
     image: terraChip,
+    textureImage: terraChipTexture,
     rooms: ["Hall & Passage", "Kitchen"],
     description:
       "Terracotta mosaic chips in a warm speckled mix. A forgiving, characterful floor for passages, verandas and utility corners.",
@@ -231,6 +265,7 @@ export const products: Product[] = [
     finish: "Gloss",
     price: 450,
     image: pearlHex,
+    textureImage: pearlHexTexture,
     rooms: ["Bathroom"],
     description:
       "Hexagonal mosaics with a pearl glaze that shifts from cream to green. A jewel-like finish for shower walls and niches.",
@@ -243,6 +278,7 @@ export const products: Product[] = [
     finish: "Satin",
     price: 520,
     image: inkLine,
+    textureImage: inkLineTexture,
     rooms: ["Kitchen", "Living Room"],
     description:
       "Long, narrow mosaic strips in deep ink tones. Lay them vertical or horizontal for a tailored, graphic backsplash or panel.",
@@ -255,6 +291,7 @@ export const products: Product[] = [
     finish: "Matte",
     price: 340,
     image: meadowMix,
+    textureImage: meadowMixTexture,
     rooms: ["Hall & Passage", "Bathroom"],
     description:
       "A meadow-toned mix of sage, cream and clay chips. Cheerful underfoot and tough enough for the busiest thresholds.",
